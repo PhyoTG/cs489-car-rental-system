@@ -3,6 +3,7 @@ package miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.controller;
 import miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.dto.Booking.BookingRequest;
 import miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.dto.Booking.BookingResponse;
 import miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.dto.Booking.BookingResponse2;
+import miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.dto.Booking.CostResponse;
 import miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.exception.BookingNotFoundException;
 import miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.service.BookingService;
 import org.springframework.http.HttpStatus;
@@ -53,5 +54,10 @@ public class BookingController {
     public ResponseEntity<List<BookingResponse2>> getAllBookings() {
         List<BookingResponse2> responses = bookingService.getAllBookings();
         return new ResponseEntity<>(responses, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/estimateCostReport")
+    public ResponseEntity<List<CostResponse>> getCost(){
+        return  new ResponseEntity<>(bookingService.calculateCost(),HttpStatus.OK);
     }
 }

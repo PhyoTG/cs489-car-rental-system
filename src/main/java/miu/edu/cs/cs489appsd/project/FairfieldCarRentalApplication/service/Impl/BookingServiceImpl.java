@@ -4,6 +4,7 @@ package miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.service.Impl
 import miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.dto.Booking.BookingRequest;
 import miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.dto.Booking.BookingResponse;
 import miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.dto.Booking.BookingResponse2;
+import miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.dto.Booking.CostResponse;
 import miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.dto.Car.CarResponse;
 import miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.dto.Customer.CustomerResponse;
 import miu.edu.cs.cs489appsd.project.FairfieldCarRentalApplication.exception.BookingNotFoundException;
@@ -18,7 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 public class BookingServiceImpl implements BookingService {
@@ -146,5 +149,28 @@ public class BookingServiceImpl implements BookingService {
                                         a.getCar().getRentalRate()
                                 ):null
                 )).toList();
+    }
+
+    @Override
+    public List<CostResponse> calculateCost() {
+        List<Booking> bookingList = BookingRepository.findAll();
+        List<CostResponse> costResponsesList = new ArrayList<>();
+//        AtomicReference<Double> total = new AtomicReference<>(0.0);
+        bookingList.forEach( a -> {
+            var totalMonths =  calculateMonths(a.getStartDate().getYear(),a.getStartDate().getMonthValue(),a.getEndDate().getYear(),a.getEndDate().getMonthValue());
+            var cost = totalMonths * a.getCar().getRentalRate();
+//            total.updateAndGet(v -> v + cost);
+            costResponsesList.add(new CostResponse(a.getBookingId(),a.getCar().getModel(),a.getCar().getMake(),a.getCar().getYear(),a.getCustomer().getFirstName()+" "+a.getCustomer().getLastName(),a.getCustomer().getContactPhone(),cost,a.getCar().getCarOwner().getFirstName()+" "+a.getCar().getCarOwner().getLastName()));
+        });
+        return costResponsesList;
+    }
+
+    private Integer calculateMonths(Integer startYear, Integer startMonth,Integer endYear, Integer endMonth ){
+        if(startYear > endYear) return 0;
+        if(startYear == endYear) {
+            if(startMonth > endMonth) return 0;
+            return endMonth - startMonth;
+        }
+        return (endYear-startYear-1)+ (12-startMonth) +endMonth;
     }
 }

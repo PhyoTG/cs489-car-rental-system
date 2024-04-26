@@ -77,7 +77,7 @@ public class UserAuthController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<UserAuthResponse> authenticateUser(@Valid UserAuthRequest userAuthRequest) throws Exception {
+    public ResponseEntity<UserAuthResponse> authenticateUser(@RequestBody  UserAuthRequest userAuthRequest) throws Exception {
         UserAuthResponse userAuthResponse = null;
         try {
             var username = userAuthRequest.username();
