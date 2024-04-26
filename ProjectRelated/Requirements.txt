@@ -1,0 +1,17 @@
+- The system should have users mapping with Roles -Manager, Owner, Renter(customers)
+- Car Owners and Renters should be able to register by providing their First Name, Last Name, Contact Phone Number, and Email.
+- The system should validate customer identity using a valid Iowa Driver License or other acceptable forms of identification
+- Only verified customers can proceed with booking requests
+- The Office Manager should be able to enroll new cars into the system.
+- The system should have Cars along with its VIM no, model, made,year and rental rate.
+- Customers should be able to search for available cars based on location, date, and category (e.g., sedan, SUV).
+- Renters can request bookings for specific cars
+- Regional Managers can confirm bookings and record appointments.
+- The system should send confirmation emails to Renters and Car Owners
+- Car Owners should have a dashboard to view all bookings related to their cars.
+- Details of the requesting Customers (First Name, Last Name) should be displayed
+- The system should provide information about each car, including its owner name, location address, telephone number, and pickup instructions.
+- Renters should be able to view their bookings, including car details.
+- Renters can request changes (e.g., cancel or reschedule) to their booking date
+- If a change request occurs within 36 hours before the booking time, a penalty fee should apply.
+- The system should track penalties and notify relevant parties
