@@ -160,7 +160,7 @@ public class BookingServiceImpl implements BookingService {
             var totalMonths =  calculateMonths(a.getStartDate().getYear(),a.getStartDate().getMonthValue(),a.getEndDate().getYear(),a.getEndDate().getMonthValue());
             var cost = totalMonths * a.getCar().getRentalRate();
 //            total.updateAndGet(v -> v + cost);
-            costResponsesList.add(new CostResponse(a.getBookingId(),a.getCar().getModel(),a.getCar().getMake(),a.getCar().getYear(),a.getCustomer().getFirstName()+" "+a.getCustomer().getLastName(),a.getCustomer().getContactPhone(),cost,a.getCar().getCarOwner().getFirstName()+" "+a.getCar().getCarOwner().getLastName()));
+            costResponsesList.add(new CostResponse(a.getBookingId(),a.getCar().getModel(),a.getCar().getMake(),a.getCar().getYear(),a.getStartDate().toString()+" "+a.getEndDate().toString(),a.getCustomer().getFirstName()+" "+a.getCustomer().getLastName(),a.getCustomer().getContactPhone(),cost,a.getCar().getCarOwner().getFirstName()+" "+a.getCar().getCarOwner().getLastName()));
         });
         return costResponsesList;
     }
