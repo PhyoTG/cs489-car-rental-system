@@ -20,10 +20,15 @@ import java.io.IOException;
 @Component
 public class JWTAuthFilter extends OncePerRequestFilter {
 
-    @Autowired
+
     private JWTMgmtUtilityService jwtMgmtUtilityService;
-    @Autowired
+
     private FFUserDetailsService ffUserDetailsService;
+
+    public JWTAuthFilter(JWTMgmtUtilityService jwtMgmtUtilityService,FFUserDetailsService ffUserDetailsService){
+        this.jwtMgmtUtilityService = jwtMgmtUtilityService;
+        this.ffUserDetailsService = ffUserDetailsService;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws BadCredentialsException,ServletException, IOException {
