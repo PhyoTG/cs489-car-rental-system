@@ -45,3 +45,24 @@ Regional Manager will insert amount of fees, including late fee, damage.
 
 # PostMan
 You can see PostMan Collection Here https://api.postman.com/collections/4350390-10ef63e0-6eb7-4fac-959b-a4b38c701632?access_key=PMAT-01HWC455PJNMK3086WZM7377SG
+
+#Screenshots on Azure
+
+Login API call on Azure
+![Azure Login.png](ProjectRelated%2FScreenshots%2FAzure%20Login.png)
+
+Create Customer
+![Azure Create Customer.png](ProjectRelated%2FScreenshots%2FAzure%20Create%20Customer.png)
+
+Get All Customers
+![Azure Get All Customers.png](ProjectRelated%2FScreenshots%2FAzure%20Get%20All%20Customers.png)
+
+Screenshot of DB
+![Azure DB Tables.png](ProjectRelated%2FScreenshots%2FAzure%20DB%20Tables.png)
+
+GitHub Action Deployment on Main Branch
+![Github Action CICD.png](ProjectRelated%2FScreenshots%2FGithub%20Action%20CICD.png)
+
+#Testing
+![Test Pass.png](ProjectRelated%2FScreenshots%2FTest%20Pass.png)
+![Unit Test Pass.png](ProjectRelated%2FScreenshots%2FUnit%20Test%20Pass.png)
